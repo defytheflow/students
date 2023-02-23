@@ -9,6 +9,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/webfonts/fa-solid-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <style>
       .sr-only {
         position: absolute;
@@ -53,10 +60,23 @@
         appearance: none;
       }
 
+      .rating-group input[type="radio"] ~ .fa-solid {
+        display: none;
+      }
+
+      .rating-group input[type="radio"]:checked ~ .fa-solid {
+        display: inline-block;
+      }
+
+      .rating-group input[type="radio"]:checked ~ .fa-regular {
+        display: none;
+      }
+
       .rating-group input[type="radio"]:focus-visible ~ .fa-star {
         border-radius: 5px;
         outline-offset: 2px;
-        outline: 3px auto -webkit-focus-ring-color;
+        outline: 3px auto rgb(0, 95, 204); /* firefox */
+        outline: 3px auto -webkit-focus-ring-color; /* chrome/safari */
       }
 
       .rating-group .fa-star {
@@ -83,26 +103,31 @@
             <span class="sr-only">одна звезда</span>
             <input type="radio" id="rating-1" name="rating" value="1" />
             <i aria-hidden="true" class="fa-regular fa-star"></i>
+            <i aria-hidden="true" class="fa-solid fa-star"></i>
           </label>
           <label class="star-radio" for="rating-2">
             <span class="sr-only">две звезды</span>
             <input type="radio" id="rating-2" name="rating" value="2" />
             <i aria-hidden="true" class="fa-regular fa-star"></i>
+            <i aria-hidden="true" class="fa-solid fa-star"></i>
           </label>
           <label class="star-radio" for="rating-3">
             <span class="sr-only">три звезды</span>
             <input type="radio" id="rating-3" name="rating" value="3" />
             <i aria-hidden="true" class="fa-regular fa-star"></i>
+            <i aria-hidden="true" class="fa-solid fa-star"></i>
           </label>
           <label class="star-radio" for="rating-4">
             <span class="sr-only">четыре звезды</span>
             <input type="radio" id="rating-4" name="rating" value="4" />
             <i aria-hidden="true" class="fa-regular fa-star"></i>
+            <i aria-hidden="true" class="fa-solid fa-star"></i>
           </label>
           <label class="star-radio" for="rating-5">
             <span class="sr-only">пять звезд</span>
             <input type="radio" id="rating-5" name="rating" value="5" />
             <i aria-hidden="true" class="fa-regular fa-star"></i>
+            <i aria-hidden="true" class="fa-solid fa-star"></i>
           </label>
         </div>
         <p id="rating-error" role="alert" class="error-message">

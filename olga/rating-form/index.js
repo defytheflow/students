@@ -42,13 +42,21 @@ form.addEventListener("submit", function onSubmit(event) {
 
 raitingRadioGroup.addEventListener("change", function onRadioGroupChange(event) {
   const { value } = event.target;
-  const starEls = raitingRadioGroup.querySelectorAll(".fa-star");
+  const stars = Array.from(raitingRadioGroup.querySelectorAll(".fa-star"));
+  const regularStars = stars.filter(function isRegularStar(star) {
+    return star.classList.contains("fa-regular");
+  });
+  const solidStars = stars.filter(function isSolidStar(star) {
+    return star.classList.contains("fa-solid");
+  });
 
   for (let i = 0; i < Number(value); i++) {
-    starEls[i].classList.replace("fa-regular", "fa-solid");
+    regularStars[i].style.setProperty("display", "none");
+    solidStars[i].style.setProperty("display", "inline-block");
   }
 
-  for (let i = Number(value); i < starEls.length; i++) {
-    starEls[i].classList.replace("fa-solid", "fa-regular");
+  for (let i = Number(value); i < regularStars.length; i++) {
+    regularStars[i].style.removeProperty("display");
+    solidStars[i].style.removeProperty("display");
   }
 });
